@@ -3,37 +3,81 @@
     <head>
         
     </head>
+    <h1>
+        Web Dictionary
+    </h1>
+    
+    
+
+    
     <body>
         
+        <div>
+        <p>Lookup the definition of a word (e.g. ajax, html, bar, php, javascript or css)</p>
+        
+        <form>
+            <input type="text" name="q" value="definition">
+             <input type="submit" value = "Search">
+        </form>
+      
+        
+    </div>
+    
+    <div> Result 
+        <br>
+          <p id="result">
+            
+            </p>
+        
+        </div>
+     <!--    
         <button onclick="alert(httpRequest.send())" >
             Search
         </button>
+        -->
         
         <script>
+         //$(document).ready(function(){
+            // $("Search").click(function(){
+            //     $("result").html();
+                 //fill in code in html( ) above
+           //  })
+        // })
+         //var httpRequest = new XMLHttpRequest();
+         //var url = "https://info2180-lab6-bluesaber.c9users.io/request.php";
+         
+        
             var httpRequest = new XMLHttpRequest();
-            var url = "https://info2180-lab6-bluesaber.c9users.io/request.php?q=definition";
+           // var url = "https://info2180-lab6-bluesaber.c9users.io/request.php?q=definition";
             httpRequest.onreadystatechange=doSomething;
-            httpRequest.open('GET',url);
-            //httpRequest.send();
+  //          httpRequest.open('GET',url);
+    //        //httpRequest.send();
             
             function doSomething(){
                 if(httpRequest.readyState===XMLHttpRequest.DONE){
                     if(httpRequest.status===200){
                         var response = httpRequest.responseText;
-                        alert(response);
+                       nextDefinition(response);
                         
                     }else{
                         alert('There was a problem with the request');
-                    }
+                   }
+                   httpRequest.send();
                     
                 }
             }
+            
+            function nextDefinition(response){
+                document.getElementById("result").innerHTML = response;
+            }
          
         </script>
+        
+      
         
 
         
     </body>
     
 
-</html>  
+</html> 
